@@ -1,4 +1,5 @@
 Collection of scripts that I find enhance my Command Line Experience (r)
 
- json2csv.py:	Extract keys from newline seperated JSON dictionaries to CSV output
+ json2csv.py:		Extract keys from newline seperated JSON dictionaries to CSV output
+ senderscore.sh:	Log to CSV the SMTP sender scores for blocks of IPs
 
