@@ -1,1 +1,4 @@
 Collection of scripts that I find enhance my Command Line Experience (r)
+
+ json2csv.py:	Extract keys from newline seperated JSON dictionaries to CSV output
+
