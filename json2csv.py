@@ -4,7 +4,7 @@ import json
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-      print """
+        print """
 Usage:
   Takes a file with a JSON dictionary on each line and extracts keys to a tab seperated CSV output
 t     ex:
@@ -13,7 +13,8 @@ t     ex:
 
       $ json2csv.py field1 email id < input.json > output.csv
 """
-    
+        sys.exit(-1)
+
     for line in sys.stdin:
         sys.stdout.write('\t'.join(str(json.loads(line)[key]) for key in sys.argv[1:]) + '\n')
 
