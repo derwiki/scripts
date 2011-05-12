@@ -1,5 +1,6 @@
 Collection of scripts that I find enhance my Command Line Experience (r)
 
+ aliases.sh					Simple aliases to make the shell more friendly
  extract_invalid_emails.py	Given a file as an argument or STDIN, print only bad email addresses
  json2csv.py:				Extract keys from newline seperated JSON dictionaries to CSV output
  senderscore.sh:			Log to CSV the SMTP sender scores for blocks of IPs

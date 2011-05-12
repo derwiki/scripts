@@ -17,5 +17,8 @@ if __name__ == "__main__":
         sys.exit(-1)
 
     for line in sys.stdin:
-        sys.stdout.write('\t'.join(str(json.loads(line)[key]) for key in sys.argv[1:]) + '\n')
+        try:
+            sys.stdout.write('\t'.join(str(json.loads(line)[key]) for key in sys.argv[1:]) + '\n')
+        except:
+            sys.stderr.write('Error parsing line: ' + line)
 
