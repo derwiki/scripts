@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import sys
 import json
+import traceback
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
@@ -18,7 +19,13 @@ if __name__ == "__main__":
 
     for line in sys.stdin:
         try:
-            sys.stdout.write('\t'.join(str(json.loads(line)[key]) for key in sys.argv[1:]) + '\n')
-        except:
+            json_dict = json.loads(line)
+            def format_output(s):
+               if type(s) in (int, float): return str(s)
+               else: return s
+
+            sys.stdout.write('\t'.join(format_output(json_dict[key]) for key in sys.argv[1:]) + '\n')
+        except Exception, e:
+            sys.stderr.write(traceback.format_exc())
             sys.stderr.write('Error parsing line: ' + line)
 
