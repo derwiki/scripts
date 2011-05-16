@@ -1,8 +1,11 @@
 Collection of scripts that I find enhance my Command Line Experience (r)
 
  aliases.sh				Simple aliases to make the shell more friendly
+ build_histogram.py			Minimal library to produce histogram data
  extract_invalid_emails.py		Given a file as an argument or STDIN, print only bad email addresses
+ generate_email_chunk.sh		Used to concatenate email segments and seed lists (probably only useful to me)
  json2csv.py:				Extract keys from newline seperated JSON dictionaries to CSV output
+ json2email_distribution.sh		Given a JSON with an 'email' field, find the top domains and counts
  senderscore.sh:			Log to CSV the SMTP sender scores for blocks of IPs
  subtract.sh:				Subtracts patterns in file from a file (alias for grep basically)
 
