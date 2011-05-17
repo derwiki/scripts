@@ -26,3 +26,4 @@ echo Sample of generated file:
 head -n 3 $filename
 tail -n 3 $filename
 echo
+echo RAILS_ENV=prodrw bundle exec rake outreach:generalmills[/tmp/$filename,$4]
