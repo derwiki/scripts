@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ -e $1 ]; then
+  echo "Usage: bootstrap_bottle project_name"
+  exit -1
+fi 
+
+mkdir $HOME/src/$1
+cd $HOME/src/$1
+git init
+mkdir vendor
+git submodule add https://github.com/defnull/bottle.git vendor/bottle
