@@ -10,3 +10,5 @@ alias jsf="grep -nr --include=*.js"
 alias rf="grep -nr --include=*.rb"
 alias ef="grep -nr --include=*.erb"
 alias rkf="grep -nr --include=*.rake"
+
+alias s="screen -xRR"

@@ -9,4 +9,8 @@ mkdir $HOME/src/$1
 cd $HOME/src/$1
 git init
 mkdir vendor
+touch vendor/__init__.py
 git submodule add https://github.com/defnull/bottle.git vendor/bottle
+touch vendor/bottle/__init__.py
+
+cp $HOME/src/scripts/server.py .
