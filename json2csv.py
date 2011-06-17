@@ -19,13 +19,18 @@ if __name__ == "__main__":
 
     for line in sys.stdin:
         try:
-            json_dict = json.loads(line)
+            json_dict = json.loads(line.strip())
             def format_output(s):
                if type(s) in (int, float): return str(s)
                else: return s
 
             sys.stdout.write('\t'.join(format_output(json_dict[key]) for key in sys.argv[1:]) + '\n')
+        except IOError, ioe:
+            # this is bizarre, but when this error is thrown there don't seem
+            # to be adverse side effects
+            pass
         except Exception, e:
+            sys.stderr.write("%s\n" % e)
             sys.stderr.write(traceback.format_exc())
             sys.stderr.write('Error parsing line: ' + line)
 

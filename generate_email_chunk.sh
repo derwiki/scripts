@@ -26,4 +26,13 @@ echo Sample of generated file:
 head -n 3 $filename
 tail -n 3 $filename
 echo
-echo RAILS_ENV=prodrw bundle exec rake outreach:generalmills[/tmp/$filename,$4]
+cp $filename /tmp/
+echo "Copying to util1..."
+scp -C $filename dev@util1:/tmp/
+echo "Copying from util1 to app server..."
+ssh dev@util1 "scp /tmp/$filename caujob01:/home/dev/"
+echo "Removing from util1..."
+#ssh dev@util1 "rm /tmp/$filename"
+echo RAILS_ENV=prodrw bundle exec rake outreach:EMAIL -- --recipients-filename=/home/dev/$filename --track-source-id=$4
+echo RAILS_ENV=prodrw bundle exec rake outreach:EMAIL -- --recipients-filename=/home/dev/$filename --track-source-id=$4 >> runfile
+
