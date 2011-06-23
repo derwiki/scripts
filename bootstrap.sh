@@ -2,6 +2,7 @@
 
 cd $HOME
 git clone git://github.com/derwiki/dotfiles.git
+rm .vimrc .screenrc .gitconfig
 ln -s dotfiles/.vimrc .vimrc
 ln -s dotfiles/.screenrc .screenrc
 ln -s dotfiles/.gitconfig .gitconfig
