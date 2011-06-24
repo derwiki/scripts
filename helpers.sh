@@ -32,3 +32,12 @@ function waitforprocess {
     sleep 1; 
   done
 }
+
+# This function look for files that have $1 in them and use sed to replace $1
+# with $2. It's best to `git commit` before you do this so you can `git diff`
+# to see what has changed.
+# Usage:
+#  refactor old_function new_better_function
+function refactor {
+  grep -r $1 * | cut -d: -f 1 | uniq | xargs -n 1 sed -i "s/$1/$2/g"
+}
