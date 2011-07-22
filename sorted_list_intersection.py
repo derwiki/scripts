@@ -11,32 +11,30 @@ def sorted_intersection(list_a, list_b):
   except IndexError:
     return intersection
 
-test_variables = (
-  (50000, 25000, 50000, 25000),
-  (500000, 250000, 50000, 25000),
-  (5000000, 2500000, 50000, 25000),
-  (list_50m, _, 500, 250),
-  (list_50m, _, 5000, 2500),
-  (list_5om, _, 50000, 25000),
-)
 
 
 if __name__ == '__main__':
     import time, random
-    list_50m = random.sample(range(35000000), 25000000)
-    for a, a_choose, b, b_choose in test_variables:
-        list_a = random.sample(range(a), a_choose) if a is not list_50m else list_50m
-        set_a = set(list_a)
-        sorted_a = sorted(list_a)
-        list_b = random.sample(range(b), b_choose)
+    word_set = set(line.strip() for line in open('word.list'))
+    print "Dictionary size: %d" % len(word_set)
+    word_list = tuple(word_set)
+    sorted_word_list = sorted(word_set)
+
+    subsets = (500, 1000, 20000, 50000, 100000, 200000, len(word_set))
+    for subset_size in subsets:
+        subset = sorted(random.sample(word_list, subset_size))
+        with open('sample_%d.list' % subset_size, 'w') as sample_file:
+            for word in sorted(tuple(subset)):
+                sample_file.write("%s\n" % word)
+
         hash_start = time.time()
-        hash_res = set_a.intersection(list_b)
+        hash_res = word_set.intersection(subset)
         hash_end = time.time()
-        print "hash: list_a %d, list_b %d, res %d: time %f" % (len(list_a), len(list_b), len(hash_res), hash_end - hash_start)
+        print "hash: word_list %d, subset %d, res %d: time %f" % (len(word_list), len(subset), len(hash_res), hash_end - hash_start)
 
         list_start = time.time()
-        list_res = sorted_intersection(sorted_a, sorted(list_b))
+        list_res = sorted_intersection(sorted_word_list, subset)
         list_end = time.time()
-        print "list: list_a %d, list_b %d, res %d: time %f" % (len(list_a), len(list_b), len(list_res), list_end - list_start)
+        print "list: word_list %d, subset %d, res %d: time %f" % (len(word_list), len(subset), len(list_res), list_end - list_start)
         print '=' * 40
 
