@@ -13,7 +13,7 @@ alias ef="grep -nr --include=*.erb"
 alias rkf="grep -nr --include=*.rake"
 
 alias s="screen -xRR"
-
+alias shs="python -m SimpleHTTPServer"
 
 ### Functions ###
 
