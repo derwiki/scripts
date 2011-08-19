@@ -15,7 +15,17 @@ alias rkf="grep -nr --include=*.rake"
 alias s="screen -xRR"
 alias shs="python -m SimpleHTTPServer"
 
+alias git-head="git log -1 | head -n 1| cut -d' ' -f 2"
+
 ### Functions ###
+
+function deployhead {
+  sha1=$(git-head)
+  pushd $HOME/starways
+  git pull origin master
+  ./deploy $1 $sha1
+  popd
+}
 
 # Usage:
 #  waitforpid 311 ; sendEmail "long running task finished"
