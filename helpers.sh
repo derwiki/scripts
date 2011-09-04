@@ -51,3 +51,9 @@ function waitforprocess {
 function refactor {
   grep -r $1 * | cut -d: -f 1 | uniq | xargs -n 1 sed -i "s/$1/$2/g"
 }
+
+# returns the number of seconds a process has been alive by looking at /proc
+# folder creation time for the process
+function pid_seconds {
+  echo $(($(date +%s) - $(stat -c '%Y' /proc/$1)))
+}
