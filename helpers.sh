@@ -15,7 +15,7 @@ alias rkf="grep -nr --include=*.rake"
 alias s="screen -xRR"
 alias shs="python -m SimpleHTTPServer"
 
-alias git-head="git log -1 | head -n 1| cut -d' ' -f 2"
+alias git-head="rev-parse HEAD"
 
 ### Functions ###
 
