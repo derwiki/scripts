@@ -19,6 +19,12 @@ alias git-head="rev-parse HEAD"
 
 ### Functions ###
 
+# Usage:
+#  github-clone derwiki/scripts
+function github-clone {
+ git clone git@github.com:$1.git
+}
+
 function deployhead {
   sha1=$(git-head)
   pushd $HOME/starways
