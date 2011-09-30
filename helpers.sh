@@ -9,6 +9,7 @@ alias ssl_decrypt="openssl des3 -d -salt -in file -out $2 -k $1"
 alias s="screen -xRR"
 alias shs="python -m SimpleHTTPServer"
 alias be="bundle exec"
+alias rsync="rsync --partial --progress"
 
 ### Functions ###
 
