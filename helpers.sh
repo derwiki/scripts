@@ -19,14 +19,6 @@ function github-clone {
  git clone git@github.com:$1.git
 }
 
-function deployhead {
-  sha1=$(git-head)
-  pushd $HOME/starways
-  git pull origin master
-  ./deploy $1 $sha1
-  popd
-}
-
 # Usage:
 #  waitforpid 311 ; sendEmail "long running task finished"
 function waitforpid {
