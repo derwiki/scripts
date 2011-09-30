@@ -69,3 +69,11 @@ ssh-reagent () {
   done
   echo Cannot find ssh agent - maybe you should reconnect and forward it?
 }
+
+function git-merge-to-master  {
+  branch=$(git branch | grep '*' | cut -d' ' -f2)
+  git fetch && \
+  git rebase origin/master && \
+  git checkout master && \
+  git merge $1 $branch
+}
