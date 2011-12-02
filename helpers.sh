@@ -7,9 +7,15 @@ alias ssl_encrypt="openssl des3 -salt -in $1 -out > $1.encrypted"
 alias ssl_decrypt="openssl des3 -d -salt -in file -out $2 -k $1"
 
 alias s="screen -xRR"
-alias shs="python -m SimpleHTTPServer"
-alias be="bundle exec"
 alias rsync="rsync --partial --progress"
+
+# Python aliases
+alias shs="python -m SimpleHTTPServer"
+
+# Ruby aliases
+alias be="bundle exec"
+alias ber="bundle exec rake"
+alias ss="bundle exec spec --drb"
 
 ### Functions ###
 
@@ -22,8 +28,8 @@ function github-clone {
 # Usage:
 #  waitforpid 311 ; sendEmail "long running task finished"
 function waitforpid {
-  while ps -p $1 1>/dev/null 2> /dev/null; do 
-    sleep 1; 
+  while ps -p $1 1>/dev/null 2> /dev/null; do
+    sleep 1;
   done
 }
 
@@ -31,7 +37,7 @@ function waitforpid {
 #  waitforprocess myscript.py ; sendEmail "long running script finished"
 function waitforprocess {
   while ps -p $(pgrep $1) 1>/dev/null 2> /dev/null; do
-    sleep 1; 
+    sleep 1;
   done
 }
 
@@ -60,12 +66,4 @@ ssh-reagent () {
     fi
   done
   echo Cannot find ssh agent - maybe you should reconnect and forward it?
-}
-
-function git-merge-to-master  {
-  branch=$(git branch | grep '*' | cut -d' ' -f2)
-  git fetch && \
-  git rebase origin/master && \
-  git checkout master && \
-  git merge $1 $branch
 }
