@@ -9,6 +9,12 @@ alias ssl_decrypt="openssl des3 -d -salt -in file -out $2 -k $1"
 alias s="screen -xRR"
 alias rsync="rsync --partial --progress"
 
+# git aliases
+alias g=git
+function opencommit {
+  vim -p $(git diff HEAD^ --name-only)
+}
+
 # Python aliases
 alias shs="python -m SimpleHTTPServer"
 
