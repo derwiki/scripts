@@ -15,6 +15,9 @@ alias g=git
 function opencommit {
   vim -p $(git diff HEAD^ --name-only)
 }
+function mmr {
+  vim -p $(git diff --diff-filter=U --name-only)
+}
 
 # Python aliases
 alias shs="python -m SimpleHTTPServer"
