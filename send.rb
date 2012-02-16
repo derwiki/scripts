@@ -2,14 +2,14 @@
 # http://stackoverflow.com/questions/1822425/sending-mail-from-bash-shell-script/1940826#1940826
 require 'net/smtp'
 
-SMTPHOST = 'mailgate'
-FROM = ARGV[0] 
-to = ARGV[1] 
-subject = ARGV[2] 
+SMTPHOST = 'localhost'
+FROM = ARGV[0]
+to = ARGV[1]
+subject = ARGV[2]
 
 def send(to, subject, message)
-  body = <<EOF 
-From: #{FROM} 
+  body = <<EOF
+From: #{FROM}
 To: #{to}
 Subject: #{subject}
 
