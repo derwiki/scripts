@@ -1,0 +1,3 @@
+#!/bin/bash
+. ~/scripts/helpers.sh
+. ~/devscripts/helpers.sh
