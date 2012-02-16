@@ -8,6 +8,7 @@ alias ssl_decrypt="openssl des3 -d -salt -in file -out $2 -k $1"
 
 alias s="screen -xRR"
 alias rsync="rsync --partial --progress"
+alias vimswap="find /tmp/ -name '*.sw*' -exec rm {} \; 2>/dev/null"
 
 # git aliases
 alias g=git
