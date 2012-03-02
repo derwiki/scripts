@@ -67,6 +67,7 @@ function pid_seconds {
 }
 
 ssh-reagent () {
+  ssh-add -D
   for agent in /tmp/ssh-*/agent.*; do
     echo "Trying $agent"
     export SSH_AUTH_SOCK=$agent
