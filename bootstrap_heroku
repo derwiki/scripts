@@ -1,0 +1,23 @@
+#!/bin/bash -e
+
+rails new $1
+cd $1
+git init
+git add .
+git commit -m "initial commit; 'rails new $1'"
+
+heroku create $1
+
+#TODO convert to heredoc
+echo >> Gemfile
+echo "# Heroku dependencies" >> Gemfile
+echo "group :production do" >> Gemfile
+echo "  gem 'pg'" >> Gemfile
+echo "  gem 'thin'" >> Gemfile
+echo "end" >> Gemfile
+
+bundle install --without production
+git add Gemfile*
+
+git commit -m "add Heroku dependencies"
+git push heroku HEAD
