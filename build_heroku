@@ -1,6 +1,8 @@
 #!/bin/bash
+echo "Clean..."
 bundle exec rake assets:clean
+echo "Precompile..."
 bundle exec rake assets:precompile
-git add public/assets
-echo About to git rm $(git status public/assets | grep deleted | cut -d' ' -f 5)
-git rm $(git status public/assets | grep deleted | cut -d' ' -f 5)
+echo "git..."
+git add -u public/assets
+git rm $(git diff --diff-filter=D --name-only)
