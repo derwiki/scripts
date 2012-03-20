@@ -4,5 +4,5 @@ bundle exec rake assets:clean
 echo "Precompile..."
 bundle exec rake assets:precompile
 echo "git..."
+git add public/assets
 git add -u public/assets
-git rm $(git diff --diff-filter=D --name-only)
