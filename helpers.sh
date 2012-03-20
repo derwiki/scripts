@@ -27,6 +27,9 @@ alias be="bundle exec"
 alias ber="bundle exec rake"
 alias ss="bundle exec spec --drb"
 
+# Clojure aliases
+alias clj="java -cp ~/bin/clojure-1.3.0.jar clojure.main"
+
 ### Functions ###
 
 # Usage:
