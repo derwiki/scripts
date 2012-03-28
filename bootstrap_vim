@@ -1,0 +1,30 @@
+#!/bin/bash -e
+# borrowed heavily from Wincent's blog post:
+# https://wincent.com/wiki/Building_Vim_from_source
+
+# setup Python
+if [ ! -d ~/src/Python-2.7.2 ]
+  then
+    cd ~/src
+	wget http://www.python.org/ftp/python/2.7.2/Python-2.7.2.tar.bz2
+	tar xjvf Python-2.7.2.tar.bz2
+    rm -rf Python-2.7.2.tar.bz2
+fi
+cd Python-2.7.2
+./configure --prefix=$HOME
+make && make install
+make inclinstall # install headers, otherwise Vim won't have Python support
+hash -r
+
+# setup vim
+if [ ! -d ~/src/vim.git ]
+  then
+    git clone https://github.com/b4winckler/vim ~/src/vim.git
+  else
+    cd ~/src/vim.git && git fetch origin && git reset --hard origin/master
+fi
+cd ~/src/vim.git
+make distclean # make sure no cached reference to system Vim is hanging around
+make clean
+./configure --with-features=huge --enable-rubyinterp --enable-pythoninterp --enable-cscope --disable-nls --prefix=$HOME --with-python-config-dir=$HOME/lib/python2.7/config
+make && make install
