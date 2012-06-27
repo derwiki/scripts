@@ -75,8 +75,9 @@ ssh-reagent () {
     echo "Trying $agent"
     export SSH_AUTH_SOCK=$agent
     if timeout -t 2 ssh-add -l 2>&1 > /dev/null; then
-      echo Found working SSH Agent:
+      echo Found working SSH Agent:      
       ssh-add -l
+      exec $@
       return
     fi
   done
