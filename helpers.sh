@@ -7,6 +7,7 @@ alias ssl_encrypt="openssl des3 -salt -in $1 -out > $1.encrypted"
 alias ssl_decrypt="openssl des3 -d -salt -in file -out $2 -k $1"
 
 alias s="screen -xRR"
+alias t="tmux attach"
 alias rsync="rsync --partial --progress"
 alias vimswap="find /tmp/ -name '*.sw*' -exec rm {} \; 2>/dev/null"
 
@@ -31,6 +32,14 @@ alias ss="bundle exec spec --drb"
 alias clj="java -cp ~/bin/clojure-1.3.0.jar clojure.main"
 
 ### Functions ###
+function flac2mp3 {
+  # note to self: % replaces substring backwards, # forwards
+  mp3filename="${1%flac}mp3"
+  echo ffmpeg -i $1 -ab 196k -ac 2 -ar 4800 $mp3filename
+  if [ -n "$RMSRC" ]; then
+    rm $1
+  fi
+}
 
 # Usage:
 #  github-clone derwiki/scripts
