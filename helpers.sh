@@ -6,10 +6,8 @@ alias us_email_only_grep="grep -e '(.org\|.com\|.net\|.edu\|.mil\|.gov)'"
 alias ssl_encrypt="openssl des3 -salt -in $1 -out > $1.encrypted"
 alias ssl_decrypt="openssl des3 -d -salt -in file -out $2 -k $1"
 
-alias s="screen -xRR"
 alias t="tmux attach"
 alias rsync="rsync --partial --progress"
-alias vimswap="find /tmp/ -name '*.sw*' -exec rm {} \; 2>/dev/null"
 
 # git aliases
 alias g=git
@@ -27,6 +25,10 @@ alias shs="python -m SimpleHTTPServer"
 alias be="bundle exec"
 alias ber="bundle exec rake"
 alias ss="bundle exec spec --drb"
+alias bi="bundle install"
+function def {
+  ack "def (self.)?$1"
+}
 
 # Clojure aliases
 alias clj="java -cp ~/bin/clojure-1.3.0.jar clojure.main"
@@ -79,15 +81,18 @@ function pid_seconds {
 }
 
 ssh-reagent () {
-  ssh-add -D
   for agent in /tmp/ssh-*/agent.*; do
-    echo "Trying $agent"
     export SSH_AUTH_SOCK=$agent
     if timeout -t 2 ssh-add -l 2>&1 > /dev/null; then
-      echo Found working SSH Agent:
-      ssh-add -l
       return
     fi
   done
   echo Cannot find ssh agent - maybe you should reconnect and forward it?
 }
+alias sr='ssh-reagent'
+
+function f {
+  find . -name \*$1\*
+}
+
+alias c=clear
