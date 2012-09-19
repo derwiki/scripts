@@ -11,7 +11,8 @@ if [ ! -d $HOME/dotfiles ]
     git fetch && git reset --hard origin/master
 fi
 
-for dotfile in .vimrc .tmux.conf .gitconfig .bash_profile; do
+=======
+for dotfile in .bashrc .vimrc .tmux.conf .gitconfig .bash_profile; do
   rm $HOME/$dotfile
   ln -s $HOME/dotfiles/$dotfile $HOME/$dotfile
 done
