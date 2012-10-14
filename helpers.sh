@@ -83,7 +83,7 @@ function pid_seconds {
 ssh-reagent () {
   for agent in /tmp/ssh-*/agent.*; do
     export SSH_AUTH_SOCK=$agent
-    if ~/scripts/timeout -k 2 ssh-add -l 2>&1 > /dev/null; then
+    if ~/scripts/timeout -t 2 ssh-add -l 2>&1 > /dev/null; then
       return
     fi
   done
