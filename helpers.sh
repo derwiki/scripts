@@ -96,3 +96,7 @@ function f {
 }
 
 alias c=clear
+
+function sum {
+  paste -sd+ $1 | bc
+}
