@@ -26,6 +26,7 @@ alias be="bundle exec"
 alias ber="bundle exec rake"
 alias ss="bundle exec spec --drb"
 alias bi="bundle install"
+alias nquery="ack 'SELECT ' log/development.log |  ack -o 'SELECT.*?=' | sort | uniq -c | sort"
 function def {
   ack "def (self.)?$1"
 }
