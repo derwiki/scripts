@@ -30,6 +30,7 @@ alias nquery="ack 'SELECT ' log/development.log |  ack -o 'SELECT.*?=' | sort | 
 function def {
   ack "def (self.)?$1"
 }
+alias v="ruby --version"
 
 # Clojure aliases
 alias clj="java -cp ~/bin/clojure-1.3.0.jar clojure.main"
