@@ -1,8 +1,8 @@
 #!/bin/bash
 echo "Clean..."
-bundle exec rake assets:clean
+bundle exec rake assets:clean || exit -1
 echo "Precompile..."
-bundle exec rake assets:precompile
+bundle exec rake assets:precompile --trace || exit -1
 echo "git..."
 git add public/assets
 git add -u public/assets
